@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Lista de Itens</h1>
+      <h1 className='title'>Tem na Lojinha</h1>
       <div className="items-list">
       {items
         .filter(item => item["Current Quantity"] > 0)

@@ -7,3 +7,9 @@ body {
   flex-direction: column;
   gap: 1rem;
 }
+
+.title {
+  font-size: 24px;
+  color: #FFF;
+  margin: 20px 0;
+}
