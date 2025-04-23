@@ -34,11 +34,19 @@ function App() {
     <div className="app">
       <h1>Lista de Itens</h1>
       <ul className="items-list">
-        {items.map((item, index) => (
+      {items
+        .filter(item => item["Current Quantity"] > 0)
+        .sort((a, b) => a.Name.localeCompare(b.Name)) // Ordem alfabética
+        .map((item, index) => (
           <li key={index} className="item">
             <h2>{item.Name}</h2>
-            {item.preco && <p>Preço: R$ {item.preco.toFixed(2)}</p>}
-            {item.descricao && <p>{item.descricao}</p>}
+            <p>Código: {item.Barcode}</p>
+            {item["Current Price"] && (
+              <p>Preço: R$ {item["Current Price"].toFixed(2)}</p>
+            )}
+            {item["Current Quantity"] && (
+              <p>Quantidade: {item["Current Quantity"]}</p>
+            )}
           </li>
         ))}
       </ul>
