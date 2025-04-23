@@ -36,8 +36,7 @@ function App() {
       .toLowerCase(); // ignora maiúsculas
 
   const filteredItems = items
-    .filter(item => item["Current Quantity"] > 0)
-    .filter(item => normalize(item.Name).includes(normalize(search)))
+    .filter(item => normalize(item.Name).includes(normalize(search))) // Removido filtro de quantidade
     .sort((a, b) => a.Name.localeCompare(b.Name));
 
   if (loading) return <div className="loading">Carregando...</div>;
@@ -59,7 +58,7 @@ function App() {
 
       <div className="items-list">
         {filteredItems.length === 0 ? (
-          <div className="no-results">Poxa, não temos nenhum item em estoque com esse nome na lojinha. &#128542;</div>
+          <div className="no-results">Poxa, não temos nenhum item com esse nome na lojinha. &#128542;</div>
         ) : (
           filteredItems.map((item) => (
             <ProductCard

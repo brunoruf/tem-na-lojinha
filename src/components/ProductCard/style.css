@@ -19,3 +19,19 @@
     font-size: 14px;
     justify-content: space-between;
 }
+
+.availability {
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .tem {
+    background-color: #4caf75; /* Verde para "TEM" */
+    color: white;
+  }
+  
+  .nao-tem {
+    background-color: #f44c36; /* Vermelho para "NÃO TEM" */
+    color: white;
+  }
