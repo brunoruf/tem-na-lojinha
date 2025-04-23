@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import { ProductCard } from './components/ProductCard';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -38,16 +39,12 @@ function App() {
         .filter(item => item["Current Quantity"] > 0)
         .sort((a, b) => a.Name.localeCompare(b.Name)) // Ordem alfabética
         .map((item, index) => (
-          <li key={index} className="item">
-            <h2>{item.Name}</h2>
-            <p>Código: {item.Barcode}</p>
-            {item["Current Price"] && (
-              <p>Preço: R$ {item["Current Price"].toFixed(2)}</p>
-            )}
-            {item["Current Quantity"] && (
-              <p>Quantidade: {item["Current Quantity"]}</p>
-            )}
-          </li>
+          <ProductCard
+            key={item.Barcode}
+            name={item.Name}
+            price={item["Current Price"]}
+            quantity={item["Current Quantity"]}
+          />
         ))}
       </ul>
     </div>
