@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://brunoruf.com.br/openmarket-api/tmp/lista.json');
+        
+        if (!response.ok) {
+          throw new Error('Erro ao carregar os dados');
+        }
+        
+        const data = await response.json();
+        setItems(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <div className="loading">Carregando...</div>;
+  if (error) return <div className="error">Erro: {error}</div>;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <h1>Lista de Itens</h1>
+      <ul className="items-list">
+        {items.map((item, index) => (
+          <li key={index} className="item">
+            <h2>{item.nome}</h2>
+            {item.preco && <p>Preço: R$ {item.preco.toFixed(2)}</p>}
+            {item.descricao && <p>{item.descricao}</p>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default App
+export default App;
