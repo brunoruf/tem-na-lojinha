@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { ProductCard } from './components/ProductCard';
+import { ProductCard } from './components/ProductCard/ProductCard';
 
 function App() {
   const [items, setItems] = useState([]);
