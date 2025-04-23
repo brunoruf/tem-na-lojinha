@@ -1,6 +1,6 @@
 .product-card {
     border: 1px solid #666;
-    border-radius: 4px;
+    border-radius: 6px;
     color: #FFF;
     padding: 1.25rem;
 }
@@ -13,6 +13,6 @@
 .product-info {
     margin-top: 1rem;
     display: flex;
-    gap: 1.25rem;
+    gap: 1rem;
     font-size: 14px;
 }
