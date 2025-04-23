@@ -11,7 +11,9 @@ export const ProductCard = ({ name, price, quantity }) => {
         <div className={`availability ${availability}`}> {/* Aplica a classe conforme a disponibilidade */}
           {quantity > 0 ? 'TEM NA LOJA' : 'NÃO TEM'}
         </div>
-        <p>Preço: <strong>R$ {price.toFixed(2)}</strong></p>
+        {quantity > 0 && ( // Exibe o preço apenas se a quantidade for maior que 0
+          <p>Preço: <strong>R$ {price.toFixed(2)}</strong></p>
+        )}
       </div>
     </div>
   );

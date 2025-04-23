@@ -29,11 +29,12 @@
   }
   
   .tem {
-    background-color: #4caf75; /* Verde para "TEM" */
-    color: white;
+    background-color: #34a061;
+    color: #FFF;
   }
   
   .nao-tem {
-    background-color: #f44c36; /* Vermelho para "NÃO TEM" */
-    color: white;
+    color: #fff;
+    border: 1px solid #f44c36;
+    font-weight: normal;
   }
