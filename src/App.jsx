@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="app">
       <h1>Lista de Itens</h1>
-      <ul className="items-list">
+      <div className="items-list">
       {items
         .filter(item => item["Current Quantity"] > 0)
         .sort((a, b) => a.Name.localeCompare(b.Name)) // Ordem alfabética
@@ -46,7 +46,7 @@ function App() {
             quantity={item["Current Quantity"]}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
