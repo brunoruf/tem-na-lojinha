@@ -49,23 +49,27 @@ function App() {
         <img src='./images/open-market-logo.png' alt='Open Market Logo' className='logo' />
         <h1 className='title'>Tem na Lojinha?</h1>
       </div>
-        <input
-          type="text"
-          placeholder="Digite o produto para buscar"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="search-input"
-        />
+      <input
+        type="text"
+        placeholder="Digite o produto para buscar"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="search-input"
+      />
 
       <div className="items-list">
-        {filteredItems.map((item) => (
-          <ProductCard
-            key={item.Barcode}
-            name={item.Name}
-            price={item["Current Price"]}
-            quantity={item["Current Quantity"]}
-          />
-        ))}
+        {filteredItems.length === 0 ? (
+          <div className="no-results">Poxa, não temos nenhum item com esse nome na lojinha. :(</div>
+        ) : (
+          filteredItems.map((item) => (
+            <ProductCard
+              key={item.Barcode}
+              name={item.Name}
+              price={item["Current Price"]}
+              quantity={item["Current Quantity"]}
+            />
+          ))
+        )}
       </div>
     </div>
   );
