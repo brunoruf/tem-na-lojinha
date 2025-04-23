@@ -59,7 +59,7 @@ function App() {
 
       <div className="items-list">
         {filteredItems.length === 0 ? (
-          <div className="no-results">Poxa, não temos nenhum item em estoque com esse nome na lojinha. :(</div>
+          <div className="no-results">Poxa, não temos nenhum item em estoque com esse nome na lojinha. &#128542;</div>
         ) : (
           filteredItems.map((item) => (
             <ProductCard
