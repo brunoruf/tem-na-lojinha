@@ -9,7 +9,7 @@ export const ProductCard = ({ name, price, quantity }) => {
       <h3 className="product-title">{name}</h3>
       <div className="product-info">
         <div className={`availability ${availability}`}> {/* Aplica a classe conforme a disponibilidade */}
-          {quantity > 0 ? 'TEM' : 'NÃO TEM'}
+          {quantity > 0 ? 'TEM NA LOJA' : 'NÃO TEM'}
         </div>
         <p>Preço: <strong>R$ {price.toFixed(2)}</strong></p>
       </div>
