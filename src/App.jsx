@@ -33,7 +33,10 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className='title'>Tem na Lojinha</h1>
+      <div className='header'>
+        <img src='./assets/images/open-market-logo.png' alt='Open Market Logo' />
+        <h1 className='title'>Tem na Lojinha?</h1>
+      </div>
       <div className="items-list">
       {items
         .filter(item => item["Current Quantity"] > 0)
