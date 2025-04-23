@@ -6,6 +6,7 @@ function App() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState(''); // ← novo estado
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,20 +29,36 @@ function App() {
     fetchData();
   }, []);
 
+  const normalize = (str) =>
+    str
+      .normalize("NFD") // separa acento da letra
+      .replace(/[\u0300-\u036f]/g, "") // remove os acentos
+      .toLowerCase(); // ignora maiúsculas
+
+  const filteredItems = items
+    .filter(item => item["Current Quantity"] > 0)
+    .filter(item => normalize(item.Name).includes(normalize(search)))
+    .sort((a, b) => a.Name.localeCompare(b.Name));
+
   if (loading) return <div className="loading">Carregando...</div>;
   if (error) return <div className="error">Erro: {error}</div>;
 
   return (
     <div className="app">
       <div className='header'>
-        <img src='./assets/images/open-market-logo.png' alt='Open Market Logo' />
+        <img src='./images/open-market-logo.png' alt='Open Market Logo' className='logo' />
         <h1 className='title'>Tem na Lojinha?</h1>
       </div>
+        <input
+          type="text"
+          placeholder="Digite o produto para buscar"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="search-input"
+        />
+
       <div className="items-list">
-      {items
-        .filter(item => item["Current Quantity"] > 0)
-        .sort((a, b) => a.Name.localeCompare(b.Name)) // Ordem alfabética
-        .map((item, index) => (
+        {filteredItems.map((item) => (
           <ProductCard
             key={item.Barcode}
             name={item.Name}

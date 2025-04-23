@@ -2,7 +2,10 @@
     border: 1px solid #666;
     border-radius: 6px;
     color: #FFF;
-    padding: 1.25rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
 }
 
 .product-title {
@@ -11,7 +14,6 @@
 }
 
 .product-info {
-    margin-top: 1rem;
     display: flex;
     gap: 1rem;
     font-size: 14px;
