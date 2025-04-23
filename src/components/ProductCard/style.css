@@ -4,3 +4,9 @@
     color: #FFF;
     padding: 1.25rem;
 }
+
+.product-info {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1.25rem;
+}

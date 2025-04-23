@@ -5,8 +5,10 @@ export const ProductCard = ({name, price, barcode, quantity}) => {
   return (
     <div className="product-card">
         <h3>{name}</h3>
-        <p>Preço: R$ {price.toFixed(2)}</p>
-        <p>Quantidade: {quantity}</p>
+        <div className='product-info'>
+          <p>Quantidade na loja: <strong>{quantity}</strong></p>
+          <p>Preço: <strong>R$ {price.toFixed(2)}</strong></p>
+        </div>
     </div>
   )
 }
