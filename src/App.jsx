@@ -36,7 +36,7 @@ function App() {
       <ul className="items-list">
         {items.map((item, index) => (
           <li key={index} className="item">
-            <h2>{item.nome}</h2>
+            <h2>{item.Name}</h2>
             {item.preco && <p>Preço: R$ {item.preco.toFixed(2)}</p>}
             {item.descricao && <p>{item.descricao}</p>}
           </li>
